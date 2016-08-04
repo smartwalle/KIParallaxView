@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author             = { "SmartWalle" => "smartwalle@gmail.com" }
   s.platform     = :ios, "5.0"
-  s.source       = { :git => "https://github.com/smartwalle/KIParallaxView.git", :branch => "master" }
+  s.source       = { :git => "https://github.com/smartwalle/KIParallaxView.git", :tag => "#{s.version}" }
 
   s.source_files  = "KIParallaxView/KIParallaxView/*.{h,m}"
   s.requires_arc = true
