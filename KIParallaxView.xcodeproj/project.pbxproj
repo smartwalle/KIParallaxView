@@ -15,6 +15,7 @@
 		1827D5621BE8971C009F3B9B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1827D5601BE8971C009F3B9B /* LaunchScreen.xib */; };
 		1827D56E1BE8971C009F3B9B /* KIParallaxViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827D56D1BE8971C009F3B9B /* KIParallaxViewTests.m */; };
 		1827D57A1BE89739009F3B9B /* KIParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827D5791BE89739009F3B9B /* KIParallaxView.m */; };
+		186F9CB61D8802D5007DF3A3 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 186F9CB51D8802D5007DF3A3 /* test.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		1827D56D1BE8971C009F3B9B /* KIParallaxViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIParallaxViewTests.m; sourceTree = "<group>"; };
 		1827D5781BE89739009F3B9B /* KIParallaxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIParallaxView.h; sourceTree = "<group>"; };
 		1827D5791BE89739009F3B9B /* KIParallaxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIParallaxView.m; sourceTree = "<group>"; };
+		186F9CB51D8802D5007DF3A3 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				1827D5771BE89739009F3B9B /* KIParallaxView */,
 				1827D5551BE8971B009F3B9B /* AppDelegate.h */,
 				1827D5561BE8971C009F3B9B /* AppDelegate.m */,
+				186F9CB51D8802D5007DF3A3 /* test.jpg */,
 				1827D5581BE8971C009F3B9B /* ViewController.h */,
 				1827D5591BE8971C009F3B9B /* ViewController.m */,
 				1827D55B1BE8971C009F3B9B /* Main.storyboard */,
@@ -215,6 +218,7 @@
 				1827D55D1BE8971C009F3B9B /* Main.storyboard in Resources */,
 				1827D5621BE8971C009F3B9B /* LaunchScreen.xib in Resources */,
 				1827D55F1BE8971C009F3B9B /* Images.xcassets in Resources */,
+				186F9CB61D8802D5007DF3A3 /* test.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
