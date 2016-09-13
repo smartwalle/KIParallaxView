@@ -9,16 +9,15 @@
 #import "KIParallaxView.h"
 
 @interface KIParallaxView() {
-    UIImageView *_imageView;
 }
 @property (nonatomic, assign) BOOL  tracking;
 @property (nonatomic, assign) BOOL  cancel;
 @property (nonatomic, assign) BOOL  dragging;
+@property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, assign) BOOL needUpdateContentView;
 @end
 
 @implementation KIParallaxView
-
-@synthesize imageView = _imageView;
 
 - (id)init {
     self = [super init];
@@ -30,15 +29,25 @@
     return self;
 }
 
-- (UIImageView *)imageView {
-    if (_imageView == nil) {
-        _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        [_imageView setBackgroundColor:[UIColor clearColor]];
-        [_imageView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
-        [_imageView setContentMode:UIViewContentModeScaleAspectFill];
-        [self addSubview:_imageView];
+- (void)setContentView:(UIView *)contentView {
+    _contentView = contentView;
+    _needUpdateContentView = YES;
+    [self addSubview:_contentView];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    if (_needUpdateContentView) {
+        UIScrollView *sv = (UIScrollView *)[self superview];
+        CGRect newFrame = CGRectMake(0, 0, CGRectGetWidth(sv.bounds), self.defaultHeight);
+        [self setFrame:newFrame];
+        [self.contentView setFrame:self.bounds];
+        [self.contentView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+        
+        [sv setContentOffset:CGPointMake(0, -1 * self.defaultHeight)];
     }
-    return _imageView;
+    _needUpdateContentView = NO;
 }
 
 - (void)removeFromSuperview {
@@ -168,20 +177,15 @@
                     delegate:(id<KIParallaxViewDelegate>)delegate
                       height:(CGFloat)height
                    minHeight:(CGFloat)minHeight {
-    [self removeParallaxView];
+    UIImageView *imageView = (UIImageView *)[[self parallaxView] contentView];
+    if (imageView == nil || ![imageView isKindOfClass:[UIImageView class]]) {
+        imageView = [[UIImageView alloc] init];
+        [imageView setBackgroundColor:[UIColor clearColor]];
+        [imageView setContentMode:UIViewContentModeScaleAspectFill];
+    }
+    [imageView setImage:image];
     
-    [[self parallaxView] setDelegate:delegate];
-    [[self parallaxView] setFrame:CGRectMake(0,
-                                             0,
-                                             CGRectGetWidth(self.bounds),
-                                             height)];
-    [[self parallaxView] setDefaultHeight:height];
-    [[self parallaxView] setMinHeight:minHeight];
-    UIEdgeInsets newInset = self.contentInset;
-    newInset.top = height;
-    [self setContentInset:newInset];
-    
-    [[self parallaxView].imageView setImage:image];
+    [self setParallaxView:imageView delegate:delegate height:height minHeight:minHeight];
 }
 
 - (void)setParallaxView:(UIView *)view
@@ -196,21 +200,14 @@
               minHeight:(CGFloat)minHeight {
     [self removeParallaxView];
     
+    [[self parallaxView] setContentView:view];
     [[self parallaxView] setDelegate:delegate];
-    [[self parallaxView] setFrame:CGRectMake(0,
-                                             0,
-                                             CGRectGetWidth(self.bounds),
-                                             height)];
     [[self parallaxView] setDefaultHeight:height];
     [[self parallaxView] setMinHeight:minHeight];
+    
     UIEdgeInsets newInset = self.contentInset;
     newInset.top = height;
     [self setContentInset:newInset];
-    
-    [view setFrame:[self parallaxView].bounds];
-    [view setAutoresizingMask:UIViewAutoresizingFlexibleWidth
-     |UIViewAutoresizingFlexibleHeight];
-    [[self parallaxView] addSubview:view];
 }
 
 - (void)removeParallaxView {

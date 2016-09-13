@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "435B5833E5885EDBC52F5573C5B5AC1BB049C407",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F9F203C792AD199C8013187F4DFADF9563B39E15" : 0,
+    "435B5833E5885EDBC52F5573C5B5AC1BB049C407" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A35815B1-ECEB-4FB0-A3CC-C6BC59C654DD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F9F203C792AD199C8013187F4DFADF9563B39E15" : "..\/Project\/VapingTour",
+    "435B5833E5885EDBC52F5573C5B5AC1BB049C407" : "KIParallaxView\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "KIParallaxView",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "KIParallaxView.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:smartwalle\/KIParallaxView.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "435B5833E5885EDBC52F5573C5B5AC1BB049C407"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab.com:smoktech\/vaping_tour_ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F9F203C792AD199C8013187F4DFADF9563B39E15"
+    }
+  ]
+}

@@ -21,7 +21,6 @@
 }
 
 @property (nonatomic, weak)     id<KIParallaxViewDelegate>  delegate;
-@property (nonatomic, readonly) UIImageView                 *imageView;
 @property (nonatomic, assign)   CGFloat                     defaultHeight;
 @property (nonatomic, assign)   CGFloat                     minHeight;
 
