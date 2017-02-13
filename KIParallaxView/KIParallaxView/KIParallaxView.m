@@ -100,17 +100,25 @@
     
     /*
      * 2014.03.09 修改
-     * 功能：如果设置了minHeight
+     * 功能：如果设置了 minHeight
      */
     CGFloat height = MAX(offsetY, self.minHeight>0?self.minHeight:self.defaultHeight);
     CGFloat y = contentOffset.y;
     if (contentOffset.y > (height * -1)) {
         y = contentOffset.y-(height+contentOffset.y);
     }
-    
+
+    /*
+     * 2017.02.13 修改
+     * 功能：如果设置了 maxHeight, 则 ParallaxView 不会随着 UIScrollView 下拉而变高
+     */
+    if (self.maxHeight > 0) {
+        height = MIN(height, self.maxHeight);
+    }
+
     /*
      * 2014.03.09 修改
-     * 功能：设置一个minHeight，让ParallaxView在顶部保持不动
+     * 功能：设置一个 minHeight，让 ParallaxView 在顶部保持不动
      */
     if ([self.superview isKindOfClass:[UITableView class]]) {
         UITableView *tableView = (UITableView *)self.superview;
@@ -170,13 +178,28 @@
 - (void)setParallaxViewImage:(UIImage *)image
                     delegate:(id<KIParallaxViewDelegate>)delegate
                       height:(CGFloat)height {
-    [self setParallaxViewImage:image delegate:delegate height:height minHeight:0];
+    [self setParallaxViewImage:image
+                      delegate:delegate
+                        height:height
+                     minHeight:0];
 }
 
 - (void)setParallaxViewImage:(UIImage *)image
                     delegate:(id<KIParallaxViewDelegate>)delegate
                       height:(CGFloat)height
                    minHeight:(CGFloat)minHeight {
+    [self setParallaxViewImage:image
+                      delegate:delegate
+                        height:height
+                     minHeight:minHeight
+                     maxHeight:0];
+}
+
+- (void)setParallaxViewImage:(UIImage *)image
+                    delegate:(id<KIParallaxViewDelegate>)delegate
+                      height:(CGFloat)height
+                   minHeight:(CGFloat)minHeight
+                   maxHeight:(CGFloat)maxHeight{
     UIImageView *imageView = (UIImageView *)[[self parallaxView] contentView];
     if (imageView == nil || ![imageView isKindOfClass:[UIImageView class]]) {
         imageView = [[UIImageView alloc] init];
@@ -185,7 +208,11 @@
     }
     [imageView setImage:image];
     
-    [self setParallaxView:imageView delegate:delegate height:height minHeight:minHeight];
+    [self setParallaxView:imageView
+                 delegate:delegate
+                   height:height
+                minHeight:minHeight
+                maxHeight:maxHeight];
 }
 
 - (void)setParallaxView:(UIView *)view
@@ -198,12 +225,25 @@
                delegate:(id<KIParallaxViewDelegate>)delegate
                  height:(CGFloat)height
               minHeight:(CGFloat)minHeight {
+    [self setParallaxView:view
+                 delegate:delegate
+                   height:height
+                minHeight:minHeight
+                maxHeight:0];
+}
+
+- (void)setParallaxView:(UIView *)view
+               delegate:(id<KIParallaxViewDelegate>)delegate
+                 height:(CGFloat)height
+              minHeight:(CGFloat)minHeight
+              maxHeight:(CGFloat)maxHeight {
     [self removeParallaxView];
     
-    [[self parallaxView] setContentView:view];
     [[self parallaxView] setDelegate:delegate];
     [[self parallaxView] setDefaultHeight:height];
     [[self parallaxView] setMinHeight:minHeight];
+    [[self parallaxView] setMaxHeight:maxHeight];
+    [[self parallaxView] setContentView:view];
     
     UIEdgeInsets newInset = self.contentInset;
     newInset.top = height;

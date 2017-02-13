@@ -23,6 +23,7 @@
 @property (nonatomic, weak)     id<KIParallaxViewDelegate>  delegate;
 @property (nonatomic, assign)   CGFloat                     defaultHeight;
 @property (nonatomic, assign)   CGFloat                     minHeight;
+@property (nonatomic, assign)   CGFloat                     maxHeight;
 
 @end
 
@@ -38,6 +39,12 @@
                       height:(CGFloat)height
                    minHeight:(CGFloat)minHeight;
 
+- (void)setParallaxViewImage:(UIImage *)image
+                    delegate:(id<KIParallaxViewDelegate>)delegate
+                      height:(CGFloat)height
+                   minHeight:(CGFloat)minHeight
+                   maxHeight:(CGFloat)maxHeight;
+
 - (void)setParallaxView:(UIView *)view
                delegate:(id<KIParallaxViewDelegate>)delegate
                  height:(CGFloat)height;
@@ -46,6 +53,12 @@
                delegate:(id<KIParallaxViewDelegate>)delegate
                  height:(CGFloat)height
               minHeight:(CGFloat)minHeight;
+
+- (void)setParallaxView:(UIView *)view
+               delegate:(id<KIParallaxViewDelegate>)delegate
+                 height:(CGFloat)height
+              minHeight:(CGFloat)minHeight
+              maxHeight:(CGFloat)maxHeight;
 
 - (void)removeParallaxView;
 
